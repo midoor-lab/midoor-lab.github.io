@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Midoor Lab Admin</title>
+
+    <link rel="stylesheet" href="/assets/style.css">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        .admin-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .admin-note {
+            background: #263846;
+            border-radius: 12px;
+            padding: 16px;
+            color: #b9c3cf;
+            margin-bottom: 25px;
+        }
+
+        .editor-card {
+            background: #314858;
+            border-radius: 15px;
+            padding: 24px;
+        }
+
+        #editor {
+            min-height: 320px;
+            background: #ffffff;
+            color: #111111;
+        }
+
+        .ql-toolbar {
+            background: #f4f4f4;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .ql-container {
+            border-radius: 0 0 8px 8px;
+        }
+
+        .image-preview {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 350px;
+            border-radius: 10px;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .button-secondary {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 11px 17px;
+            background: #263846;
+            color: white;
+            text-decoration: none;
+            border: 1px solid #536878;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button-secondary:hover {
+            background: #405766;
+        }
+
+        .status-box {
+            margin-top: 20px;
+            display: none;
+            padding: 14px;
+            border-radius: 8px;
+            background: #263846;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <h1>⚡ Midoor Lab</h1>
+    <p>Administrace blogu</p>
+</header>
+
+<nav class="site-nav">
+    <a href="/">Domů</a>
+    <a href="/meteo/">🌦️ Meteo</a>
+    <a class="active" href="/admin/">Admin</a>
+</nav>
+
+<main class="container">
+
+    <div class="admin-wrap">
+
+        <h1 class="page-title">Nový článek</h1>
+
+        <p class="page-subtitle">
+            Jednoduchý editor příspěvků pro Midoor Lab.
+        </p>
+
+        <div class="admin-note">
+            🔒 Publikování ještě není aktivní. V dalším kroku přidáme bezpečné přihlášení přes GitHub.
+        </div>
+
+        <div class="editor-card">
+
+            <div class="form-group">
+                <label for="title">Název článku</label>
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Například: Stavba vlastní meteostanice"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="category">Kategorie</label>
+
+                <select id="category">
+                    <option value="Bastlení">Bastlení</option>
+                    <option value="Elektronika">Elektronika</option>
+                    <option value="ESP32">ESP32</option>
+                    <option value="Raspberry Pi">Raspberry Pi</option>
+                    <option value="Meteostanice">Meteostanice</option>
+                    <option value="HomeDashboard">HomeDashboard</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="excerpt">Krátký úvod</label>
+
+                <textarea
+                    id="excerpt"
+                    style="min-height:110px"
+                    placeholder="Krátký popis článku, který se zobrazí na hlavní stránce."
+                ></textarea>
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="cover">Hlavní obrázek</label>
+
+                <input
+                    type="file"
+                    id="cover"
+                    accept="image/*"
+                >
+
+                <div
+                    class="image-preview"
+                    id="imagePreview"
+                >
+                    <img
+                        id="previewImage"
+                        alt="Náhled obrázku"
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Obsah článku</label>
+
+                <div id="editor"></div>
+
+            </div>
+
+
+            <div class="admin-actions">
+
+                <button
+                    class="button-secondary"
+                    type="button"
+                    onclick="showPreview()"
+                >
+                    Náhled
+                </button>
+
+                <button
+                    class="button"
+                    type="button"
+                    onclick="publishArticle()"
+                >
+                    Publikovat
+                </button>
+
+            </div>
+
+
+            <div
+                class="status-box"
+                id="statusBox"
+            ></div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="site-footer">
+    Midoor Lab Admin • 2026
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
+
+<script>
+
+const quill = new Quill('#editor', {
+
+    theme: 'snow',
+
+    placeholder:
+        'Sem napiš obsah článku...',
+
+    modules: {
+
+        toolbar: [
+
+            [
+                { header: [2, 3, false] }
+            ],
+
+            [
+                'bold',
+                'italic',
+                'underline'
+            ],
+
+            [
+                { list: 'ordered' },
+                { list: 'bullet' }
+            ],
+
+            [
+                'blockquote',
+                'link'
+            ],
+
+            [
+                'clean'
+            ]
+
+        ]
+
+    }
+
+});
+
+
+/* ==========================================
+   NAHLED HLAVNIHO OBRAZKU
+   ========================================== */
+
+document
+    .getElementById('cover')
+    .addEventListener(
+        'change',
+        function () {
+
+            const file =
+                this.files[0];
+
+            const box =
+                document.getElementById(
+                    'imagePreview'
+                );
+
+            const img =
+                document.getElementById(
+                    'previewImage'
+                );
+
+
+            if (!file) {
+
+                box.style.display =
+                    'none';
+
+                return;
+
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function (event) {
+
+                    img.src =
+                        event.target.result;
+
+                    box.style.display =
+                        'block';
+
+                };
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+
+/* ==========================================
+   NAHLED CLANKU
+   ========================================== */
+
+function showPreview() {
+
+    const title =
+        document
+            .getElementById('title')
+            .value
+            .trim();
+
+    const category =
+        document
+            .getElementById('category')
+            .value;
+
+    const excerpt =
+        document
+            .getElementById('excerpt')
+            .value
+            .trim();
+
+    const content =
+        quill.root.innerHTML;
+
+
+    if (!title) {
+
+        showStatus(
+            'Nejdřív napiš název článku.',
+            true
+        );
+
+        return;
+
+    }
+
+
+    const preview =
+        window.open(
+            '',
+            '_blank'
+        );
+
+
+    preview.document.write(`
+        <!DOCTYPE html>
+        <html lang="cs">
+        <head>
+
+            <meta charset="UTF-8">
+
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
+            >
+
+            <title>${escapeHtml(title)}</title>
+
+            <link
+                rel="stylesheet"
+                href="/assets/style.css"
+            >
+
+        </head>
+
+        <body>
+
+            <header class="site-header">
+
+                <h1>⚡ Midoor Lab</h1>
+
+                <p>
+                    Bastlení • Elektronika • vlastní projekty
+                </p>
+
+            </header>
+
+
+            <nav class="site-nav">
+
+                <a href="/">
+                    Domů
+                </a>
+
+                <a href="/meteo/">
+                    🌦️ Meteo
+                </a>
+
+            </nav>
+
+
+            <main class="container">
+
+                <article class="article-content">
+
+                    <div class="article-date">
+
+                        Náhled
+
+                        <span class="category">
+                            ${escapeHtml(category)}
+                        </span>
+
+                    </div>
+
+                    <h1>
+                        ${escapeHtml(title)}
+                    </h1>
+
+                    <p>
+                        <strong>
+                            ${escapeHtml(excerpt)}
+                        </strong>
+                    </p>
+
+                    ${content}
+
+                </article>
+
+            </main>
+
+        </body>
+        </html>
+    `);
+
+    preview.document.close();
+
+}
+
+
+/* ==========================================
+   PUBLIKOVANI
+   ========================================== */
+
+function publishArticle() {
+
+    showStatus(
+        'Publikování ještě není aktivní. Nejdřív přidáme bezpečné GitHub přihlášení.',
+        false
+    );
+
+}
+
+
+/* ==========================================
+   STATUS
+   ========================================== */
+
+function showStatus(
+    message,
+    error
+) {
+
+    const box =
+        document.getElementById(
+            'statusBox'
+        );
+
+    box.textContent =
+        message;
+
+    box.style.display =
+        'block';
+
+    box.style.color =
+        error
+            ? '#ff7b72'
+            : '#ffffff';
+
+}
+
+
+/* ==========================================
+   ESCAPE HTML
+   ========================================== */
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement(
+            'div'
+        );
+
+    div.textContent =
+        text || '';
+
+    return div.innerHTML;
+
+}
+
+</script>
+
+</body>
+</html>
