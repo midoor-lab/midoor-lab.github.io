@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="cs">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,146 +12,50 @@
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 
-
 <body>
 
 <header class="site-header">
-
     <h1>⚡ Midoor Lab</h1>
-
-    <p>
-        Bastlení • Elektronika • ESP32 • Raspberry Pi • vlastní projekty
-    </p>
-
+    <p>Bastlení • Elektronika • ESP32 • Raspberry Pi • vlastní projekty</p>
 </header>
 
-
 <nav class="site-nav">
-
     <a class="active" href="/">Domů</a>
-
-    <a href="/meteo/">
-        🌦️ Meteo
-    </a>
-
-    <a href="#projekty">
-        Projekty
-    </a>
-
-    <a href="#omne">
-        O mně
-    </a>
-
+    <a href="/meteo/">🌦️ Meteo</a>
+    <a href="#projekty">Projekty</a>
+    <a href="#omne">O mně</a>
 </nav>
-
 
 <main class="container">
 
     <div class="blog-layout">
 
-
-        <!-- =====================================
-             HLAVNI CAST BLOGU
-             ===================================== -->
-
         <section class="blog-main">
 
-            <h1 class="page-title">
-                Nejnovější příspěvky
-            </h1>
+            <h1 class="page-title">Nejnovější příspěvky</h1>
 
             <p class="page-subtitle">
                 Bastlení, elektronika a moje vlastní projekty.
             </p>
 
+            <div id="posts">
+                Načítám příspěvky...
+            </div>
 
-            <!-- PRISPEVEK 1 -->
-
-            <article class="post">
-
-                <div class="post-body">
-
-                    <div class="post-meta">
-
-                        19. srpna 2026
-
-                        <span class="category">
-                            Midoor Lab
-                        </span>
-
-                    </div>
-
-
-                    <h2>
-
-                        <a href="/clanky/prvni-clanek.html">
-                            Vítejte v Midoor Lab
-                        </a>
-
-                    </h2>
-
-
-                    <p>
-                        Vítejte na Midoor Lab – místě pro moje
-                        bastlení, elektroniku, ESP32, Raspberry Pi
-                        a další vlastní technické projekty.
-                    </p>
-
-
-                    <a class="button"
-                       href="/clanky/prvni-clanek.html">
-
-                        Číst dál →
-
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <!--
-            ==================================================
-            DALSI CLANKY
-
-            Na jedne strane budeme zobrazovat maximalne
-            5 prispevku.
-
-            Novy prispevek budeme pridavat nad starsi.
-            ==================================================
-            -->
-
-
-            <!-- STRANKOVANI -->
-
-            <nav class="pagination"
-                 aria-label="Stránkování blogu">
-
-                <span class="current">
-                    1
-                </span>
-
+            <nav
+                id="pagination"
+                class="pagination"
+                aria-label="Stránkování blogu">
             </nav>
 
         </section>
 
 
-
-        <!-- =====================================
-             PRAVY SIDEBAR
-             ===================================== -->
-
         <aside class="sidebar">
 
+            <div class="sidebar-box" id="omne">
 
-            <!-- O WEBU -->
-
-            <div class="sidebar-box"
-                 id="omne">
-
-                <h3>
-                    ⚡ Midoor Lab
-                </h3>
+                <h3>⚡ Midoor Lab</h3>
 
                 <p>
                     Moje bastlení, elektronika,
@@ -163,15 +66,9 @@
             </div>
 
 
+            <div class="sidebar-box" id="projekty">
 
-            <!-- PROJEKTY -->
-
-            <div class="sidebar-box"
-                 id="projekty">
-
-                <h3>
-                    🔧 Projekty
-                </h3>
+                <h3>🔧 Projekty</h3>
 
                 <ul>
 
@@ -198,75 +95,30 @@
             </div>
 
 
-
-            <!-- KATEGORIE -->
-
             <div class="sidebar-box">
 
-                <h3>
-                    📁 Kategorie
-                </h3>
+                <h3>📁 Kategorie</h3>
 
                 <ul>
-
-                    <li>
-                        <a href="#">
-                            ESP32
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Raspberry Pi
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Meteostanice
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Elektronika
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            Bastlení
-                        </a>
-                    </li>
-
+                    <li><a href="#">ESP32</a></li>
+                    <li><a href="#">Raspberry Pi</a></li>
+                    <li><a href="#">Meteostanice</a></li>
+                    <li><a href="#">Elektronika</a></li>
+                    <li><a href="#">Bastlení</a></li>
                 </ul>
 
             </div>
 
 
-
-            <!-- POSLEDNI PRISPEVKY -->
-
             <div class="sidebar-box">
 
-                <h3>
-                    📝 Poslední příspěvky
-                </h3>
+                <h3>📝 Poslední příspěvky</h3>
 
-                <ul>
-
-                    <li>
-
-                        <a href="/clanky/prvni-clanek.html">
-                            Vítejte v Midoor Lab
-                        </a>
-
-                    </li>
-
+                <ul id="latest-posts">
+                    <li>Načítám...</li>
                 </ul>
 
             </div>
-
 
         </aside>
 
@@ -276,12 +128,360 @@
 
 
 <footer class="site-footer">
-
     © 2026 Midoor Lab
-
 </footer>
 
 
-</body>
+<script>
 
+const POSTS_PER_PAGE = 5;
+
+let allPosts = [];
+
+
+/* =========================================================
+   ZJISTENI AKTUALNI STRANKY
+   ========================================================= */
+
+function getCurrentPage() {
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    let page =
+        parseInt(params.get('page') || '1', 10);
+
+    if (
+        Number.isNaN(page) ||
+        page < 1
+    ) {
+        page = 1;
+    }
+
+    return page;
+}
+
+
+/* =========================================================
+   ESCAPE TEXTU
+   ========================================================= */
+
+function escapeHtml(text) {
+
+    const div =
+        document.createElement('div');
+
+    div.textContent =
+        text ?? '';
+
+    return div.innerHTML;
+}
+
+
+/* =========================================================
+   ZOBRAZENI CLANKU
+   ========================================================= */
+
+function renderPosts() {
+
+    const container =
+        document.getElementById('posts');
+
+    const page =
+        getCurrentPage();
+
+    const totalPages =
+        Math.max(
+            1,
+            Math.ceil(
+                allPosts.length /
+                POSTS_PER_PAGE
+            )
+        );
+
+    const safePage =
+        Math.min(page, totalPages);
+
+    const start =
+        (safePage - 1) *
+        POSTS_PER_PAGE;
+
+    const posts =
+        allPosts.slice(
+            start,
+            start + POSTS_PER_PAGE
+        );
+
+
+    if (posts.length === 0) {
+
+        container.innerHTML = `
+            <div class="card">
+                Zatím zde nejsou žádné příspěvky.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        posts.map(post => `
+
+            <article class="post">
+
+                <div class="post-body">
+
+                    <div class="post-meta">
+
+                        ${escapeHtml(post.dateText)}
+
+                        ${
+                            post.category
+                            ?
+                            `<span class="category">
+                                ${escapeHtml(post.category)}
+                             </span>`
+                            :
+                            ''
+                        }
+
+                    </div>
+
+
+                    <h2>
+
+                        <a href="${post.url}">
+                            ${escapeHtml(post.title)}
+                        </a>
+
+                    </h2>
+
+
+                    <p>
+                        ${escapeHtml(post.excerpt)}
+                    </p>
+
+
+                    <a
+                        class="button"
+                        href="${post.url}">
+
+                        Číst dál →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+        `).join('');
+
+
+    renderPagination(
+        safePage,
+        totalPages
+    );
+
+}
+
+
+/* =========================================================
+   STRANKOVANI
+   ========================================================= */
+
+function renderPagination(
+    page,
+    totalPages
+) {
+
+    const pagination =
+        document.getElementById(
+            'pagination'
+        );
+
+    if (totalPages <= 1) {
+
+        pagination.innerHTML = `
+            <span class="current">1</span>
+        `;
+
+        return;
+    }
+
+
+    let html = '';
+
+
+    if (page > 1) {
+
+        html += `
+            <a href="?page=${page - 1}">
+                ←
+            </a>
+        `;
+
+    }
+
+
+    for (
+        let i = 1;
+        i <= totalPages;
+        i++
+    ) {
+
+        if (i === page) {
+
+            html += `
+                <span class="current">
+                    ${i}
+                </span>
+            `;
+
+        } else {
+
+            html += `
+                <a href="?page=${i}">
+                    ${i}
+                </a>
+            `;
+
+        }
+
+    }
+
+
+    if (page < totalPages) {
+
+        html += `
+            <a href="?page=${page + 1}">
+                →
+            </a>
+        `;
+
+    }
+
+
+    pagination.innerHTML =
+        html;
+
+}
+
+
+/* =========================================================
+   POSLEDNI PRISPEVKY V SIDEBARU
+   ========================================================= */
+
+function renderLatestPosts() {
+
+    const container =
+        document.getElementById(
+            'latest-posts'
+        );
+
+    const latest =
+        allPosts.slice(0, 5);
+
+
+    if (latest.length === 0) {
+
+        container.innerHTML =
+            '<li>Žádné příspěvky</li>';
+
+        return;
+    }
+
+
+    container.innerHTML =
+        latest.map(post => `
+
+            <li>
+
+                <a href="${post.url}">
+                    ${escapeHtml(post.title)}
+                </a>
+
+            </li>
+
+        `).join('');
+
+}
+
+
+/* =========================================================
+   NACITANI POSTS.JSON
+   ========================================================= */
+
+async function loadPosts() {
+
+    try {
+
+        const response =
+            await fetch(
+                '/data/posts.json?time=' +
+                Date.now(),
+                {
+                    cache: 'no-store'
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                'HTTP ' +
+                response.status
+            );
+
+        }
+
+
+        allPosts =
+            await response.json();
+
+
+        /* Nejnovější článek první */
+
+        allPosts.sort(
+            (a, b) =>
+                String(b.date)
+                    .localeCompare(
+                        String(a.date)
+                    )
+        );
+
+
+        renderPosts();
+        renderLatestPosts();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'Chyba načtení článků:',
+            error
+        );
+
+
+        document.getElementById(
+            'posts'
+        ).innerHTML = `
+
+            <div class="card status-error">
+                Příspěvky se nepodařilo načíst.
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+loadPosts();
+
+</script>
+
+</body>
 </html>
