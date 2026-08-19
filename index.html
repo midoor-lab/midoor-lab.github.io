@@ -1,97 +1,115 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Midoor Lab</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>Midoor Lab</title>
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #101722;
-            color: #f5f5f5;
-        }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        header {
-            background: #182331;
-            padding: 35px 20px;
-            text-align: center;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #172333;
+    color: white;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 42px;
-        }
+header {
+    background: linear-gradient(135deg, #405766, #263846);
+    text-align: center;
+    padding: 45px 20px;
+}
 
-        header p {
-            color: #b9c3cf;
-            margin-top: 10px;
-        }
+header h1 {
+    margin: 0;
+    font-size: 42px;
+}
 
-        nav {
-            background: #0b1119;
-            text-align: center;
-            padding: 16px;
-        }
+header p {
+    margin-top: 10px;
+    color: #ddd;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 18px;
-            font-weight: bold;
-        }
+nav {
+    background: #202a33;
+    text-align: center;
+    padding: 17px;
+}
 
-        nav a:hover {
-            color: #70c7ff;
-        }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+}
 
-        main {
-            max-width: 1000px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+nav a:hover {
+    color: #21d4fd;
+}
 
-        h2 {
-            margin-bottom: 25px;
-        }
+.container {
+    max-width: 900px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
 
-        .article {
-            background: #1a2635;
-            padding: 25px;
-            border-radius: 14px;
-            margin-bottom: 20px;
-        }
+h2 {
+    margin-bottom: 25px;
+}
 
-        .article h3 {
-            margin-top: 0;
-        }
+.card {
+    background: #314858;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
 
-        .date {
-            color: #8fa0b3;
-            font-size: 14px;
-        }
+.card h3 {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
 
-        .button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 16px;
-            background: #2787c7;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
+.date {
+    color: #ccc;
+    font-size: 14px;
+}
 
-        footer {
-            text-align: center;
-            color: #8391a0;
-            padding: 40px 20px;
-        }
-    </style>
+.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 18px;
+    background: #21c8e5;
+    color: #10202b;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: #5cddf3;
+}
+
+footer {
+    text-align: center;
+    color: #aaa;
+    padding: 40px 20px;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 34px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 7px 10px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -104,15 +122,15 @@
 <nav>
     <a href="/">Domů</a>
     <a href="/meteo/">🌦️ Meteo</a>
-    <a href="/projekty/">Projekty</a>
-    <a href="/o-mne/">O mně</a>
+    <a href="#projekty">Projekty</a>
+    <a href="#omne">O mně</a>
 </nav>
 
-<main>
+<div class="container">
 
     <h2>Nejnovější příspěvky</h2>
 
-    <div class="article">
+    <div class="card">
         <div class="date">19. srpna 2026</div>
 
         <h3>Vítejte v Midoor Lab</h3>
@@ -122,26 +140,46 @@
             Raspberry Pi a další vlastní projekty.
         </p>
 
-        <a class="button" href="#">Číst dál</a>
+        <a href="/clanky/prvni-clanek.html" class="button">
+            Číst dál
+        </a>
     </div>
 
-    <div class="article">
+
+    <div class="card" id="projekty">
+
         <div class="date">Můj projekt</div>
 
         <h3>🌦️ Veltruby Meteo</h3>
 
         <p>
-            Vlastní meteostanice s měřením teploty, vlhkosti,
-            tlaku a srážek.
+            Vlastní meteostanice s měřením teploty,
+            vlhkosti, tlaku a srážek.
         </p>
 
-        <a class="button" href="/meteo/">Otevřít meteostanici</a>
+        <a href="/meteo/" class="button">
+            Otevřít meteostanici
+        </a>
+
     </div>
 
-</main>
+
+    <div class="card" id="omne">
+
+        <h3>⚡ O Midoor Lab</h3>
+
+        <p>
+            Midoor Lab je místo pro moje vlastní projekty,
+            bastlení, elektroniku, ESP32, Raspberry Pi
+            a další technické experimenty.
+        </p>
+
+    </div>
+
+</div>
 
 <footer>
-    © 2026 Midoor Lab
+    Midoor Lab • 2026
 </footer>
 
 </body>
