@@ -1,184 +1,130 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Midoor Lab</title>
+    <title>Midoor Lab</title>
 
-<style>
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #172333;
-    color: white;
-}
-
-header {
-    background: linear-gradient(135deg, #405766, #263846);
-    text-align: center;
-    padding: 45px 20px;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 42px;
-}
-
-header p {
-    margin-top: 10px;
-    color: #ddd;
-}
-
-nav {
-    background: #202a33;
-    text-align: center;
-    padding: 17px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 20px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: #21d4fd;
-}
-
-.container {
-    max-width: 900px;
-    margin: 45px auto;
-    padding: 0 20px;
-}
-
-h2 {
-    margin-bottom: 25px;
-}
-
-.card {
-    background: #314858;
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-}
-
-.card h3 {
-    margin-top: 5px;
-    margin-bottom: 15px;
-}
-
-.date {
-    color: #ccc;
-    font-size: 14px;
-}
-
-.button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 12px 18px;
-    background: #21c8e5;
-    color: #10202b;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-.button:hover {
-    background: #5cddf3;
-}
-
-footer {
-    text-align: center;
-    color: #aaa;
-    padding: 40px 20px;
-}
-
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 34px;
-    }
-
-    nav a {
-        display: inline-block;
-        margin: 7px 10px;
-    }
-}
-</style>
+    <link rel="stylesheet" href="/assets/style.css">
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
     <h1>⚡ Midoor Lab</h1>
     <p>Bastlení • Elektronika • ESP32 • Raspberry Pi • vlastní projekty</p>
 </header>
 
-<nav>
-    <a href="/">Domů</a>
+<nav class="site-nav">
+    <a class="active" href="/">Domů</a>
     <a href="/meteo/">🌦️ Meteo</a>
     <a href="#projekty">Projekty</a>
     <a href="#omne">O mně</a>
 </nav>
 
-<div class="container">
+<main class="container">
 
-    <h2>Nejnovější příspěvky</h2>
+    <h1 class="page-title">Midoor Lab</h1>
 
-    <div class="card">
-        <div class="date">19. srpna 2026</div>
+    <p class="page-subtitle">
+        Moje bastlení, elektronika, ESP32, Raspberry Pi a další vlastní projekty.
+    </p>
 
-        <h3>Vítejte v Midoor Lab</h3>
+    <h2 class="section-title">Nejnovější příspěvky</h2>
+
+    <article class="article-card">
+        <div class="article-date">
+            19. srpna 2026
+        </div>
+
+        <h2>Vítejte v Midoor Lab</h2>
 
         <p>
             Místo pro moje bastlení, elektroniku, ESP32,
-            Raspberry Pi a další vlastní projekty.
+            Raspberry Pi a další vlastní technické projekty.
         </p>
 
-        <a href="/clanky/prvni-clanek.html" class="button">
+        <a class="button" href="/clanky/prvni-clanek.html">
             Číst dál
         </a>
+    </article>
+
+
+    <h2 class="section-title" id="projekty">
+        Projekty
+    </h2>
+
+    <div class="card-grid">
+
+        <div class="card">
+
+            <h2>🌦️ Veltruby Meteo</h2>
+
+            <p>
+                Vlastní meteostanice s měřením teploty,
+                vlhkosti, atmosférického tlaku a srážek.
+            </p>
+
+            <a class="button" href="/meteo/">
+                Otevřít meteostanici
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>🏠 HomeDashboard HD5</h2>
+
+            <p>
+                Vlastní domácí monitorovací systém postavený
+                na Raspberry Pi 5.
+            </p>
+
+            <p>
+                Postupně zde přibude více informací o projektu.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>📡 ESP projekty</h2>
+
+            <p>
+                Wi-Fi zařízení, senzory, měření,
+                automatizace a další vlastní elektronika.
+            </p>
+
+        </div>
+
     </div>
 
 
-    <div class="card" id="projekty">
+    <h2 class="section-title" id="omne">
+        O Midoor Lab
+    </h2>
 
-        <div class="date">Můj projekt</div>
-
-        <h3>🌦️ Veltruby Meteo</h3>
+    <div class="card">
 
         <p>
-            Vlastní meteostanice s měřením teploty,
-            vlhkosti, tlaku a srážek.
+            Midoor Lab je místo, kam dávám svoje vlastní
+            projekty, bastlení a zkušenosti s elektronikou.
         </p>
-
-        <a href="/meteo/" class="button">
-            Otevřít meteostanici
-        </a>
-
-    </div>
-
-
-    <div class="card" id="omne">
-
-        <h3>⚡ O Midoor Lab</h3>
 
         <p>
-            Midoor Lab je místo pro moje vlastní projekty,
-            bastlení, elektroniku, ESP32, Raspberry Pi
-            a další technické experimenty.
+            Nejčastěji používám ESP32, Raspberry Pi,
+            různé senzory a další elektronické moduly.
         </p>
 
     </div>
 
-</div>
+</main>
 
-<footer>
+
+<footer class="site-footer">
     Midoor Lab • 2026
 </footer>
 
