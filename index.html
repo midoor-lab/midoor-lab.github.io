@@ -1,123 +1,274 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Midoor Lab – bastlení, elektronika, ESP32, Raspberry Pi a vlastní projekty.">
 
     <title>Midoor Lab</title>
 
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 
+
 <body>
 
 <header class="site-header">
+
     <h1>⚡ Midoor Lab</h1>
-    <p>Bastlení • Elektronika • ESP32 • Raspberry Pi • vlastní projekty</p>
+
+    <p>
+        Bastlení • Elektronika • ESP32 • Raspberry Pi • vlastní projekty
+    </p>
+
 </header>
 
+
 <nav class="site-nav">
+
     <a class="active" href="/">Domů</a>
-    <a href="/meteo/">🌦️ Meteo</a>
-    <a href="#projekty">Projekty</a>
-    <a href="#omne">O mně</a>
+
+    <a href="/meteo/">
+        🌦️ Meteo
+    </a>
+
+    <a href="#projekty">
+        Projekty
+    </a>
+
+    <a href="#omne">
+        O mně
+    </a>
+
 </nav>
+
 
 <main class="container">
 
-    <h1 class="page-title">Midoor Lab</h1>
-
-    <p class="page-subtitle">
-        Moje bastlení, elektronika, ESP32, Raspberry Pi a další vlastní projekty.
-    </p>
-
-    <h2 class="section-title">Nejnovější příspěvky</h2>
-
-    <article class="article-card">
-        <div class="article-date">
-            19. srpna 2026
-        </div>
-
-        <h2>Vítejte v Midoor Lab</h2>
-
-        <p>
-            Místo pro moje bastlení, elektroniku, ESP32,
-            Raspberry Pi a další vlastní technické projekty.
-        </p>
-
-        <a class="button" href="/clanky/prvni-clanek.html">
-            Číst dál
-        </a>
-    </article>
+    <div class="blog-layout">
 
 
-    <h2 class="section-title" id="projekty">
-        Projekty
-    </h2>
+        <!-- =====================================
+             HLAVNI CAST BLOGU
+             ===================================== -->
 
-    <div class="card-grid">
+        <section class="blog-main">
 
-        <div class="card">
+            <h1 class="page-title">
+                Nejnovější příspěvky
+            </h1>
 
-            <h2>🌦️ Veltruby Meteo</h2>
-
-            <p>
-                Vlastní meteostanice s měřením teploty,
-                vlhkosti, atmosférického tlaku a srážek.
+            <p class="page-subtitle">
+                Bastlení, elektronika a moje vlastní projekty.
             </p>
 
-            <a class="button" href="/meteo/">
-                Otevřít meteostanici
-            </a>
 
-        </div>
+            <!-- PRISPEVEK 1 -->
 
+            <article class="post">
 
-        <div class="card">
+                <div class="post-body">
 
-            <h2>🏠 HomeDashboard HD5</h2>
+                    <div class="post-meta">
 
-            <p>
-                Vlastní domácí monitorovací systém postavený
-                na Raspberry Pi 5.
-            </p>
+                        19. srpna 2026
 
-            <p>
-                Postupně zde přibude více informací o projektu.
-            </p>
+                        <span class="category">
+                            Midoor Lab
+                        </span>
 
-        </div>
+                    </div>
 
 
-        <div class="card">
+                    <h2>
 
-            <h2>📡 ESP projekty</h2>
+                        <a href="/clanky/prvni-clanek.html">
+                            Vítejte v Midoor Lab
+                        </a>
 
-            <p>
-                Wi-Fi zařízení, senzory, měření,
-                automatizace a další vlastní elektronika.
-            </p>
-
-        </div>
-
-    </div>
+                    </h2>
 
 
-    <h2 class="section-title" id="omne">
-        O Midoor Lab
-    </h2>
+                    <p>
+                        Vítejte na Midoor Lab – místě pro moje
+                        bastlení, elektroniku, ESP32, Raspberry Pi
+                        a další vlastní technické projekty.
+                    </p>
 
-    <div class="card">
 
-        <p>
-            Midoor Lab je místo, kam dávám svoje vlastní
-            projekty, bastlení a zkušenosti s elektronikou.
-        </p>
+                    <a class="button"
+                       href="/clanky/prvni-clanek.html">
 
-        <p>
-            Nejčastěji používám ESP32, Raspberry Pi,
-            různé senzory a další elektronické moduly.
-        </p>
+                        Číst dál →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!--
+            ==================================================
+            DALSI CLANKY
+
+            Na jedne strane budeme zobrazovat maximalne
+            5 prispevku.
+
+            Novy prispevek budeme pridavat nad starsi.
+            ==================================================
+            -->
+
+
+            <!-- STRANKOVANI -->
+
+            <nav class="pagination"
+                 aria-label="Stránkování blogu">
+
+                <span class="current">
+                    1
+                </span>
+
+            </nav>
+
+        </section>
+
+
+
+        <!-- =====================================
+             PRAVY SIDEBAR
+             ===================================== -->
+
+        <aside class="sidebar">
+
+
+            <!-- O WEBU -->
+
+            <div class="sidebar-box"
+                 id="omne">
+
+                <h3>
+                    ⚡ Midoor Lab
+                </h3>
+
+                <p>
+                    Moje bastlení, elektronika,
+                    ESP32, Raspberry Pi a další
+                    vlastní projekty.
+                </p>
+
+            </div>
+
+
+
+            <!-- PROJEKTY -->
+
+            <div class="sidebar-box"
+                 id="projekty">
+
+                <h3>
+                    🔧 Projekty
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="/meteo/">
+                            🌦️ Veltruby Meteo
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            🏠 HomeDashboard HD5
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            📡 ESP projekty
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- KATEGORIE -->
+
+            <div class="sidebar-box">
+
+                <h3>
+                    📁 Kategorie
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#">
+                            ESP32
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Raspberry Pi
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Meteostanice
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Elektronika
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Bastlení
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- POSLEDNI PRISPEVKY -->
+
+            <div class="sidebar-box">
+
+                <h3>
+                    📝 Poslední příspěvky
+                </h3>
+
+                <ul>
+
+                    <li>
+
+                        <a href="/clanky/prvni-clanek.html">
+                            Vítejte v Midoor Lab
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </aside>
 
     </div>
 
@@ -125,8 +276,12 @@
 
 
 <footer class="site-footer">
-    Midoor Lab • 2026
+
+    © 2026 Midoor Lab
+
 </footer>
 
+
 </body>
+
 </html>
