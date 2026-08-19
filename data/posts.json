@@ -1,5 +1,14 @@
 [
   {
+    "id": "test",
+    "title": "Test",
+    "date": "2026-08-20",
+    "dateText": "20. srpna 2026",
+    "category": "Bastlení",
+    "excerpt": "Test",
+    "url": "/clanky/test.html"
+  },
+  {
     "id": "prvni-clanek",
     "title": "Vítejte v Midoor Lab",
     "date": "2026-08-19",
