@@ -1,92 +1,235 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Midoor Lab – bastlení, elektronika, ESP32, Raspberry Pi a vlastní projekty.">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Midoor Lab – elektronika, bastlení, software a vlastní projekty."
+    >
 
     <title>Midoor Lab</title>
 
-    <link rel="stylesheet" href="/assets/style.css">
+    <link
+        rel="stylesheet"
+        href="/assets/style.css"
+    >
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     HLAVICKA
+     ===================================================== -->
+
 <header class="site-header">
-    <h1>⚡ Midoor Lab</h1>
-    <p>Bastlení • Elektronika • ESP32 • Raspberry Pi • vlastní projekty</p>
+
+    <div class="header-inner">
+
+        <a href="/" aria-label="Midoor Lab">
+
+            <img
+                class="site-logo"
+                src="/assets/midoor-lab-logo.png"
+                alt="Midoor Lab"
+            >
+
+        </a>
+
+
+        <p class="site-tagline">
+            Elektronika • Bastlení • Software
+        </p>
+
+    </div>
+
 </header>
 
+
+
+<!-- =====================================================
+     MENU
+     ===================================================== -->
+
 <nav class="site-nav">
-    <a class="active" href="/">Domů</a>
-    <a href="/meteo/">🌦️ Meteo</a>
-    <a href="#projekty">Projekty</a>
-    <a href="#omne">O mně</a>
+
+    <div class="nav-inner">
+
+        <a
+            class="active"
+            href="/"
+        >
+            Domů
+        </a>
+
+        <a href="/meteo/">
+            🌦️ Meteo
+        </a>
+
+        <a href="#projekty">
+            Projekty
+        </a>
+
+        <a href="#kategorie">
+            Kategorie
+        </a>
+
+    </div>
+
 </nav>
+
+
+
+<!-- =====================================================
+     OBSAH
+     ===================================================== -->
 
 <main class="container">
 
     <div class="blog-layout">
 
+
+        <!-- =================================================
+             BLOG
+             ================================================= -->
+
         <section class="blog-main">
 
-            <h1 class="page-title">Nejnovější příspěvky</h1>
+            <h1 class="page-title">
+                Nejnovější příspěvky
+            </h1>
 
             <p class="page-subtitle">
-                Bastlení, elektronika a moje vlastní projekty.
+                Elektronika, bastlení, software a moje vlastní projekty.
             </p>
 
+
             <div id="posts">
+
                 Načítám příspěvky...
+
             </div>
+
 
             <nav
                 id="pagination"
                 class="pagination"
-                aria-label="Stránkování blogu">
+                aria-label="Stránkování blogu"
+            >
             </nav>
 
         </section>
 
 
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
         <aside class="sidebar">
 
-            <div class="sidebar-box" id="omne">
 
-                <h3>⚡ Midoor Lab</h3>
+            <!-- PROJEKTY -->
 
-                <p>
-                    Moje bastlení, elektronika,
-                    ESP32, Raspberry Pi a další
-                    vlastní projekty.
-                </p>
+            <div
+                class="sidebar-box"
+                id="projekty"
+            >
 
-            </div>
-
-
-            <div class="sidebar-box" id="projekty">
-
-                <h3>🔧 Projekty</h3>
+                <h3>
+                    🔧 Projekty
+                </h3>
 
                 <ul>
 
                     <li>
+
                         <a href="/meteo/">
                             🌦️ Veltruby Meteo
                         </a>
+
                     </li>
 
+
                     <li>
+
                         <a href="#">
                             🏠 HomeDashboard HD5
                         </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="#">
+                            📡 ESP projekty
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- KATEGORIE -->
+
+            <div
+                class="sidebar-box"
+                id="kategorie"
+            >
+
+                <h3>
+                    📁 Kategorie
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#">
+                            Elektronika
+                        </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            📡 ESP projekty
+                            Bastlení
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Software
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            ESP32
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Raspberry Pi
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Meteostanice
                         </a>
                     </li>
 
@@ -95,30 +238,25 @@
             </div>
 
 
-            <div class="sidebar-box">
 
-                <h3>📁 Kategorie</h3>
-
-                <ul>
-                    <li><a href="#">ESP32</a></li>
-                    <li><a href="#">Raspberry Pi</a></li>
-                    <li><a href="#">Meteostanice</a></li>
-                    <li><a href="#">Elektronika</a></li>
-                    <li><a href="#">Bastlení</a></li>
-                </ul>
-
-            </div>
-
+            <!-- POSLEDNI PRISPEVKY -->
 
             <div class="sidebar-box">
 
-                <h3>📝 Poslední příspěvky</h3>
+                <h3>
+                    📝 Poslední příspěvky
+                </h3>
 
                 <ul id="latest-posts">
-                    <li>Načítám...</li>
+
+                    <li>
+                        Načítám...
+                    </li>
+
                 </ul>
 
             </div>
+
 
         </aside>
 
@@ -127,10 +265,22 @@
 </main>
 
 
+
+<!-- =====================================================
+     PATICKA
+     ===================================================== -->
+
 <footer class="site-footer">
+
     © 2026 Midoor Lab
+
 </footer>
 
+
+
+<!-- =====================================================
+     BLOG JAVASCRIPT
+     ===================================================== -->
 
 <script>
 
@@ -139,43 +289,59 @@ const POSTS_PER_PAGE = 5;
 let allPosts = [];
 
 
+
 /* =========================================================
-   ZJISTENI AKTUALNI STRANKY
+   AKTUALNI STRANKA
    ========================================================= */
 
 function getCurrentPage() {
 
     const params =
-        new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
 
     let page =
-        parseInt(params.get('page') || '1', 10);
+        parseInt(
+            params.get("page") || "1",
+            10
+        );
+
 
     if (
         Number.isNaN(page) ||
         page < 1
     ) {
+
         page = 1;
+
     }
 
+
     return page;
+
 }
 
 
+
 /* =========================================================
-   ESCAPE TEXTU
+   BEZPECNE ZOBRAZENI TEXTU
    ========================================================= */
 
 function escapeHtml(text) {
 
     const div =
-        document.createElement('div');
+        document.createElement(
+            "div"
+        );
 
     div.textContent =
-        text ?? '';
+        text ?? "";
 
     return div.innerHTML;
+
 }
+
 
 
 /* =========================================================
@@ -185,10 +351,14 @@ function escapeHtml(text) {
 function renderPosts() {
 
     const container =
-        document.getElementById('posts');
+        document.getElementById(
+            "posts"
+        );
+
 
     const page =
         getCurrentPage();
+
 
     const totalPages =
         Math.max(
@@ -199,12 +369,18 @@ function renderPosts() {
             )
         );
 
+
     const safePage =
-        Math.min(page, totalPages);
+        Math.min(
+            page,
+            totalPages
+        );
+
 
     const start =
         (safePage - 1) *
         POSTS_PER_PAGE;
+
 
     const posts =
         allPosts.slice(
@@ -213,24 +389,63 @@ function renderPosts() {
         );
 
 
-    if (posts.length === 0) {
+    if (
+        posts.length === 0
+    ) {
 
         container.innerHTML = `
+
             <div class="card">
+
                 Zatím zde nejsou žádné příspěvky.
+
             </div>
+
         `;
 
+        renderPagination(
+            safePage,
+            totalPages
+        );
+
         return;
+
     }
 
 
+
     container.innerHTML =
-        posts.map(post => `
+        posts.map(
+            post => `
+
 
             <article class="post">
 
+
+                ${
+                    post.image
+                    ?
+                    `
+
+                    <a href="${escapeHtml(post.url)}">
+
+                        <img
+                            class="post-image"
+                            src="${escapeHtml(post.image)}"
+                            alt="${escapeHtml(post.title)}"
+                            loading="lazy"
+                        >
+
+                    </a>
+
+                    `
+                    :
+                    ""
+                }
+
+
                 <div class="post-body">
+
 
                     <div class="post-meta">
 
@@ -239,43 +454,60 @@ function renderPosts() {
                         ${
                             post.category
                             ?
-                            `<span class="category">
+                            `
+
+                            <span class="category">
+
                                 ${escapeHtml(post.category)}
-                             </span>`
+
+                            </span>
+
+                            `
                             :
-                            ''
+                            ""
                         }
 
                     </div>
 
 
+
                     <h2>
 
-                        <a href="${post.url}">
+                        <a href="${escapeHtml(post.url)}">
+
                             ${escapeHtml(post.title)}
+
                         </a>
 
                     </h2>
 
 
+
                     <p>
+
                         ${escapeHtml(post.excerpt)}
+
                     </p>
+
 
 
                     <a
                         class="button"
-                        href="${post.url}">
+                        href="${escapeHtml(post.url)}"
+                    >
 
                         Číst dál →
 
                     </a>
 
+
                 </div>
 
             </article>
 
-        `).join('');
+
+        `
+        ).join("");
 
 
     renderPagination(
@@ -284,6 +516,7 @@ function renderPosts() {
     );
 
 }
+
 
 
 /* =========================================================
@@ -297,31 +530,47 @@ function renderPagination(
 
     const pagination =
         document.getElementById(
-            'pagination'
+            "pagination"
         );
 
-    if (totalPages <= 1) {
+
+    if (
+        totalPages <= 1
+    ) {
 
         pagination.innerHTML = `
-            <span class="current">1</span>
+
+            <span class="current">
+                1
+            </span>
+
         `;
 
         return;
+
     }
 
 
-    let html = '';
+    let html = "";
 
 
-    if (page > 1) {
+    if (
+        page > 1
+    ) {
 
         html += `
-            <a href="?page=${page - 1}">
+
+            <a
+                href="?page=${page - 1}"
+                aria-label="Předchozí stránka"
+            >
                 ←
             </a>
+
         `;
 
     }
+
 
 
     for (
@@ -330,20 +579,28 @@ function renderPagination(
         i++
     ) {
 
-        if (i === page) {
+        if (
+            i === page
+        ) {
 
             html += `
+
                 <span class="current">
                     ${i}
                 </span>
+
             `;
 
-        } else {
+        }
+
+        else {
 
             html += `
+
                 <a href="?page=${i}">
                     ${i}
                 </a>
+
             `;
 
         }
@@ -351,12 +608,20 @@ function renderPagination(
     }
 
 
-    if (page < totalPages) {
+
+    if (
+        page < totalPages
+    ) {
 
         html += `
-            <a href="?page=${page + 1}">
+
+            <a
+                href="?page=${page + 1}"
+                aria-label="Další stránka"
+            >
                 →
             </a>
+
         `;
 
     }
@@ -368,6 +633,7 @@ function renderPagination(
 }
 
 
+
 /* =========================================================
    POSLEDNI PRISPEVKY V SIDEBARU
    ========================================================= */
@@ -376,36 +642,48 @@ function renderLatestPosts() {
 
     const container =
         document.getElementById(
-            'latest-posts'
+            "latest-posts"
         );
 
+
     const latest =
-        allPosts.slice(0, 5);
+        allPosts.slice(
+            0,
+            5
+        );
 
 
-    if (latest.length === 0) {
+    if (
+        latest.length === 0
+    ) {
 
         container.innerHTML =
-            '<li>Žádné příspěvky</li>';
+            "<li>Žádné příspěvky</li>";
 
         return;
+
     }
 
 
     container.innerHTML =
-        latest.map(post => `
+        latest.map(
+            post => `
 
-            <li>
+                <li>
 
-                <a href="${post.url}">
-                    ${escapeHtml(post.title)}
-                </a>
+                    <a href="${escapeHtml(post.url)}">
 
-            </li>
+                        ${escapeHtml(post.title)}
 
-        `).join('');
+                    </a>
+
+                </li>
+
+            `
+        ).join("");
 
 }
+
 
 
 /* =========================================================
@@ -418,18 +696,23 @@ async function loadPosts() {
 
         const response =
             await fetch(
-                '/data/posts.json?time=' +
+
+                "/data/posts.json?time=" +
                 Date.now(),
+
                 {
-                    cache: 'no-store'
+                    cache: "no-store"
                 }
+
             );
 
 
-        if (!response.ok) {
+        if (
+            !response.ok
+        ) {
 
             throw new Error(
-                'HTTP ' +
+                "HTTP " +
                 response.status
             );
 
@@ -440,48 +723,85 @@ async function loadPosts() {
             await response.json();
 
 
+        if (
+            !Array.isArray(allPosts)
+        ) {
+
+            throw new Error(
+                "Neplatný formát posts.json"
+            );
+
+        }
+
+
+
         /* Nejnovější článek první */
 
         allPosts.sort(
             (a, b) =>
-                String(b.date)
-                    .localeCompare(
-                        String(a.date)
+                String(
+                    b.date || ""
+                ).localeCompare(
+                    String(
+                        a.date || ""
                     )
+                )
         );
 
 
         renderPosts();
+
         renderLatestPosts();
 
     }
 
+
     catch (error) {
 
         console.error(
-            'Chyba načtení článků:',
+            "Chyba načtení článků:",
             error
         );
 
 
-        document.getElementById(
-            'posts'
-        ).innerHTML = `
+        document
+            .getElementById(
+                "posts"
+            )
+            .innerHTML = `
 
-            <div class="card status-error">
-                Příspěvky se nepodařilo načíst.
-            </div>
+                <div class="card status-error">
 
-        `;
+                    Příspěvky se nepodařilo načíst.
+
+                </div>
+
+            `;
+
+
+        document
+            .getElementById(
+                "latest-posts"
+            )
+            .innerHTML = `
+
+                <li>
+                    Nelze načíst příspěvky
+                </li>
+
+            `;
 
     }
 
 }
 
 
+
 loadPosts();
 
 </script>
 
+
 </body>
+
 </html>
