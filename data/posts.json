@@ -7,14 +7,5 @@
     "category": "Bastlení",
     "excerpt": "Test",
     "url": "/clanky/test.html"
-  },
-  {
-    "id": "prvni-clanek",
-    "title": "Vítejte v Midoor Lab",
-    "date": "2026-08-19",
-    "dateText": "19. srpna 2026",
-    "category": "Midoor Lab",
-    "excerpt": "Vítejte na Midoor Lab – místě pro moje bastlení, elektroniku, ESP32, Raspberry Pi a další vlastní technické projekty.",
-    "url": "/clanky/prvni-clanek.html"
   }
 ]
