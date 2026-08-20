@@ -195,6 +195,23 @@
 
 
         <!-- =================================================
+             CLANEK
+             ================================================= -->
+
+        <section
+            id="article-view"
+            class="blog-main"
+            hidden
+        >
+            <div id="article-container">
+                <div class="card">
+                    Načítám článek...
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =================================================
              SIDEBAR
              ================================================= -->
 
@@ -350,6 +367,128 @@ function escapeHtml(text) {
 
 
 /* =========================================================
+   ODKAZ NA CLANEK UVNITR WEBU
+   ========================================================= */
+
+function articleHash(url) {
+
+    const safeUrl =
+        String(url || "");
+
+    return "#clanek=" +
+        encodeURIComponent(safeUrl);
+}
+
+
+/* =========================================================
+   NACITANI CLANKU DO HLAVNI STRANKY
+   ========================================================= */
+
+async function loadArticle(url) {
+
+    const container =
+        document.getElementById(
+            "article-container"
+        );
+
+    container.innerHTML = `
+        <div class="card">
+            Načítám článek...
+        </div>
+    `;
+
+    try {
+
+        const response =
+            await fetch(
+                url +
+                (url.includes("?") ? "&" : "?") +
+                "time=" +
+                Date.now(),
+                {
+                    cache: "no-store"
+                }
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "HTTP " +
+                response.status
+            );
+        }
+
+        const source =
+            await response.text();
+
+        const parser =
+            new DOMParser();
+
+        const doc =
+            parser.parseFromString(
+                source,
+                "text/html"
+            );
+
+        const article =
+            doc.querySelector(
+                ".article-content"
+            );
+
+        if (!article) {
+            throw new Error(
+                "Obsah článku nebyl nalezen."
+            );
+        }
+
+        const clone =
+            article.cloneNode(true);
+
+        /* Puvodni tlacitko Zpet nahradime navratem v ramci webu. */
+        clone
+            .querySelectorAll(
+                'a[href="/"], a[href="./"], a[href="../"]'
+            )
+            .forEach(link => {
+
+                if (
+                    link.textContent
+                        .toLowerCase()
+                        .includes("zpět")
+                ) {
+                    link.href = "#domu";
+                }
+            });
+
+        container.innerHTML = "";
+
+        container.appendChild(
+            clone
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Chyba načtení článku:",
+            error
+        );
+
+        container.innerHTML = `
+            <div class="card status-error">
+                Článek se nepodařilo načíst.
+                <p>
+                    <a class="button" href="#domu">
+                        ← Zpět na blog
+                    </a>
+                </p>
+            </div>
+        `;
+    }
+}
+
+
+/* =========================================================
    ZOBRAZENI CLANKU
    ========================================================= */
 
@@ -432,7 +571,7 @@ function renderPosts() {
                     ?
                     `
 
-                    <a href="${escapeHtml(post.url)}">
+                    <a href="${articleHash(post.url)}">
 
                         <img
                             class="post-image"
@@ -478,7 +617,7 @@ function renderPosts() {
 
                     <h2>
 
-                        <a href="${escapeHtml(post.url)}">
+                        <a href="${articleHash(post.url)}">
 
                             ${escapeHtml(post.title)}
 
@@ -498,7 +637,7 @@ function renderPosts() {
 
                     <a
                         class="button"
-                        href="${escapeHtml(post.url)}"
+                        href="${articleHash(post.url)}"
                     >
 
                         Číst dál →
@@ -676,7 +815,7 @@ function renderLatestPosts() {
 
                 <li>
 
-                    <a href="${escapeHtml(post.url)}">
+                    <a href="${articleHash(post.url)}">
 
                         ${escapeHtml(post.title)}
 
@@ -819,6 +958,9 @@ function switchView() {
     const meteo =
         document.getElementById("meteo-view");
 
+    const article =
+        document.getElementById("article-view");
+
     const homeNav =
         document.getElementById("nav-home");
 
@@ -826,12 +968,17 @@ function switchView() {
         document.getElementById("nav-meteo");
 
 
+    blog.hidden = true;
+    meteo.hidden = true;
+    article.hidden = true;
+
+    homeNav.classList.remove("active");
+    meteoNav.classList.remove("active");
+
+
     if (hash === "#meteo") {
 
-        blog.hidden = true;
         meteo.hidden = false;
-
-        homeNav.classList.remove("active");
         meteoNav.classList.add("active");
 
         if (!meteoLoaded) {
@@ -848,11 +995,50 @@ function switchView() {
     }
 
 
-    blog.hidden = false;
-    meteo.hidden = true;
+    if (hash.startsWith("#clanek=")) {
 
+        article.hidden = false;
+
+        const url =
+            decodeURIComponent(
+                hash.substring(
+                    "#clanek=".length
+                )
+            );
+
+        if (
+            url.startsWith("/clanky/")
+        ) {
+            loadArticle(url);
+        }
+        else {
+            document
+                .getElementById(
+                    "article-container"
+                )
+                .innerHTML = `
+                    <div class="card status-error">
+                        Neplatný odkaz na článek.
+                        <p>
+                            <a class="button" href="#domu">
+                                ← Zpět na blog
+                            </a>
+                        </p>
+                    </div>
+                `;
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        return;
+    }
+
+
+    blog.hidden = false;
     homeNav.classList.add("active");
-    meteoNav.classList.remove("active");
 }
 
 
