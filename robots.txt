@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://midoor-lab.github.io/sitemap.xml
