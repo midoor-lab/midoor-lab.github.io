@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0"
+>
+
+<title>Venus OS na Raspberry Pi – udělejme si vlastní Victron GX | Midoor Lab</title>
+
+<meta
+  name="description"
+  content="Máte doma Raspberry Pi, které se už nějakou dobu válí v šuplíku a čeká na svůj životní úkol? Tak dneska ho dostane. Místo dalšího domácího serveru, přehrávače nebo zařízení, které…"
+>
+
+<meta
+  name="robots"
+  content="index, follow"
+>
+
+<link
+  rel="canonical"
+  href="https://midoor-lab.github.io/clanky/venus-os-na-raspberry-pi-udelejme-si-vlastni-victron-gx.html"
+>
+
+<meta
+  property="og:title"
+  content="Venus OS na Raspberry Pi – udělejme si vlastní Victron GX"
+>
+
+<meta
+  property="og:description"
+  content="Máte doma Raspberry Pi, které se už nějakou dobu válí v šuplíku a čeká na svůj životní úkol? Tak dneska ho dostane. Místo dalšího domácího serveru, přehrávače nebo zařízení, které…"
+>
+
+<meta
+  property="og:type"
+  content="article"
+>
+
+<meta
+  property="og:url"
+  content="https://midoor-lab.github.io/clanky/venus-os-na-raspberry-pi-udelejme-si-vlastni-victron-gx.html"
+>
+
+
+
+<meta
+  name="twitter:card"
+  content="summary"
+>
+
+<meta
+  name="twitter:title"
+  content="Venus OS na Raspberry Pi – udělejme si vlastní Victron GX"
+>
+
+<meta
+  name="twitter:description"
+  content="Máte doma Raspberry Pi, které se už nějakou dobu válí v šuplíku a čeká na svůj životní úkol? Tak dneska ho dostane. Místo dalšího domácího serveru, přehrávače nebo zařízení, které…"
+>
+
+<link
+  rel="stylesheet"
+  href="/assets/style.css"
+>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+<h1>⚡ Midoor Lab</h1>
+
+<p>
+Bastlení • Elektronika • ESP32 • Raspberry Pi • vlastní projekty
+</p>
+
+</header>
+
+
+<nav class="site-nav">
+
+<a href="/">
+Domů
+</a>
+
+<a href="/meteo/">
+🌦️ Meteo
+</a>
+
+<a href="/#projekty">
+Projekty
+</a>
+
+<a href="/#omne">
+O mně
+</a>
+
+</nav>
+
+
+<main class="container">
+
+<article class="article-content">
+
+
+<div class="article-date">
+
+23. srpna 2026
+
+<span class="category">
+Software
+</span>
+
+</div>
+
+
+<h1>
+Venus OS na Raspberry Pi – udělejme si vlastní Victron GX
+</h1>
+
+
+
+
+
+
+<!-- MIDOOR_CONTENT_START -->
+<h1>Máte doma Raspberry Pi, které se už nějakou dobu válí v šuplíku a čeká na svůj životní úkol?</h1><p>Tak dneska ho dostane.</p><p>Místo dalšího domácího serveru, přehrávače nebo zařízení, které bude dalších pět let zobrazovat teplotu v obýváku, z něj uděláme základ pro <strong>monitorování a řízení energetického systému pomocí Venus OS od Victron Energy</strong>.</p><p>A nejlepší na tom je, že k tomu nepotřebujeme kupovat celé GX zařízení.</p><h2>Co je vlastně Venus OS?</h2><p><strong>Venus OS</strong> je operační systém společnosti Victron Energy používaný v jejich GX zařízeních.</p><p>Jeho úkolem je propojit jednotlivé části energetického systému a nabídnout nám jedno místo, kde můžeme sledovat například:</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>baterie,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>solární regulátory,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>měniče a nabíječky,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>stav systému,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>výrobu a spotřebu energie,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>alarmy,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>historii a další provozní informace.</li></ol><p>Data lze následně zobrazovat v přehledném rozhraní a systém může být připojen také ke službě <strong>Victron VRM</strong> pro vzdálený dohled.</p><p>A právě Venus OS lze rozběhnout také na Raspberry Pi.</p><p>Z malého počítače za pár korun se tak může stát velmi schopné centrum energetického systému.</p><p>No dobře... „za pár korun“ záleží na tom, kdy jste Raspberry Pi kupovali. 😄</p><h2>Proč Venus OS na Raspberry Pi?</h2><p>Hlavní výhodou je možnost postavit si vlastní GX řešení.</p><p>Pokud už Raspberry Pi máme doma, můžeme si Venus OS nejprve vyzkoušet a zjistit, jak celý ekosystém Victron funguje.</p><p>Raspberry Pi navíc nabízí USB, Ethernet, Wi-Fi, GPIO a podle použitého příslušenství také možnost připojit displej.</p><p>Je to tedy velmi zajímavá platforma nejen pro běžné použití, ale hlavně pro lidi, kteří rádi experimentují.</p><p>A jestli čtete Midoor Lab, asi už tušíte, do které skupiny patříme.</p><h2>Jaké Raspberry Pi můžeme použít?</h2><p>Podpora závisí na konkrétním modelu a také verzi Venus OS.</p><p>Mezi podporované varianty patří například:</p><p><strong>Raspberry Pi 2</strong></p><p>Používá image řady <code>raspberrypi2</code>.</p><p><strong>Raspberry Pi 3 B a 3 B+</strong></p><p>Také používají image <code>raspberrypi2</code>.</p><p><strong>Raspberry Pi Zero 2 W</strong></p><p>Je podporováno od novějších verzí Venus OS a používá image <code>raspberrypi2</code>.</p><p>Pozor na obyčejné Raspberry Pi Zero a Zero W – ty podporované nejsou.</p><p><strong>Raspberry Pi 4</strong></p><p>Používá vlastní image:</p><p><code>raspberrypi4</code></p><p>Podporováno je také Raspberry Pi CM4 a Raspberry Pi 400.</p><p><strong>Raspberry Pi 5</strong></p><p>Nejnovější generace Raspberry Pi má vlastní image:</p><p><code>raspberrypi5</code></p><p>Podpora Raspberry Pi 5 je k dispozici od <strong>Venus OS v3.70</strong>.</p><p>Takže než něco nahrajeme na kartu, je potřeba vybrat správný image pro naše Raspberry Pi.</p><p>Jinak z něj místo energetického centra pravděpodobně vyrobíme velmi drahou červenou LEDku.</p><h2>Co budeme potřebovat?</h2><p>Na základní instalaci toho není mnoho:</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>podporované Raspberry Pi,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>microSD kartu,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>odpovídající zdroj napájení,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>počítač se čtečkou SD karet,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>připojení k síti,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>image Venus OS.</li></ol><p>Pro první spuštění je velmi praktické použít <strong>Ethernetový kabel</strong>.</p><p>Wi-Fi můžeme nastavit později.</p><h2>Stažení Venus OS</h2><p>Nejdříve potřebujeme správný image Venus OS.</p><p>Distribuovaný obraz má příponu:</p><p><code>.wic.gz</code></p><p>Vybereme variantu odpovídající našemu Raspberry Pi.</p><p>Například pro Raspberry Pi 5 hledáme image <code>raspberrypi5</code>, zatímco Raspberry Pi 4 používá <code>raspberrypi4</code>.</p><p>Tady se opravdu vyplatí dvakrát zkontrolovat, co máme na stole, a až potom začít zapisovat kartu.</p><h2>Zápis systému na SD kartu</h2><p>Stažený obraz Venus OS musíme zapsat na microSD kartu.</p><p>Ve Windows lze použít například <strong>balenaEtcher</strong> nebo jiný program schopný zapsat image na kartu.</p><p>Vybereme stažený soubor <code>.wic.gz</code>, vybereme správnou SD kartu a spustíme zápis.</p><p>A ano – opravdu si zkontrolujte, kterou jednotku jste vybrali.</p><p>Formátování rodinného disku s fotkami místo osmigigové SD karty dokáže výrazně pokazit náladu při bastlení.</p><p>Po dokončení kartu bezpečně vysuneme z počítače.</p><h2>První spuštění</h2><p>MicroSD kartu vložíme do Raspberry Pi.</p><p>Pro první spuštění je vhodné Raspberry připojit Ethernetovým kabelem do stejné sítě, ve které máme počítač nebo telefon.</p><p>Potom připojíme napájení.</p><p>Raspberry Pi nabootuje Venus OS a po chvíli bychom měli být schopni zařízení najít v síti.</p><h2>Jak se do Venus OS dostaneme?</h2><p>Máme několik možností.</p><p>Jednou z nejjednodušších je otevřít v prohlížeči:</p><p><code>http://venus.local</code></p><p>Pokud to v naší síti nefunguje, zjistíme IP adresu Raspberry Pi například v administraci routeru nebo pomocí aplikace VictronConnect.</p><p>Potom stačí do prohlížeče zadat IP adresu zařízení.</p><p>Například:</p><p><code>http://192.168.1.123</code></p><p>A pokud všechno proběhlo správně, objeví se <strong>Remote Console Venus OS</strong>.</p><p>V tu chvíli už Raspberry Pi přestává být obyčejným Raspberry Pi a začíná se chovat jako součást světa Victron GX.</p><h2>A co displej?</h2><p>Raspberry Pi můžeme samozřejmě provozovat úplně bez monitoru a k rozhraní přistupovat přes síť.</p><p>Pokud ale chceme vlastní „GX panel“, můžeme připojit displej.</p><p>Venus OS lze používat například s oficiálním Raspberry Pi dotykovým displejem a existují také možnosti použití HDMI dotykových displejů.</p><p>Tím už se dostáváme k poměrně zajímavému domácímu projektu – Raspberry Pi, dotykový displej a Venus OS v pěkné krabičce.</p><p>A najednou ten šuplíkový počítač začíná vypadat docela profesionálně.</p><h2>Jak připojíme zařízení Victron?</h2><p>Samotné Raspberry Pi je samozřejmě pouze mozek systému. Potřebujeme k němu dostat data z jednotlivých Victron zařízení.</p><p>Způsob připojení závisí na použitém zařízení.</p><h3>VE.Direct</h3><p>Zařízení používající <strong>VE.Direct</strong> lze připojit přes převodník VE.Direct–USB.</p><p>Victron doporučuje používat galvanicky oddělený originální kabel. Levné nebo doma vyrobené USB/Serial převodníky sice mohou fungovat, ale mohou také způsobovat problémy.</p><p>Tady tedy není úplně ideální místo na soutěž:</p><p><strong>„Kolik korun dokážu ušetřit na jednom kabelu.“</strong></p><h3>VE.Bus</h3><p>Pro zařízení využívající VE.Bus, například některé měniče Multi nebo Quattro, se používá rozhraní <strong>MK3-USB</strong>.</p><p>Po připojení by jej měl Venus OS rozpoznat bez další složité konfigurace.</p><h3>VE.Can</h3><p>Připojit lze také zařízení využívající <strong>VE.Can</strong>, zde už ale potřebujeme vhodné CAN rozhraní pro Raspberry Pi.</p><h2>Wi-Fi</h2><p>Po prvním spuštění nemusíme zůstat odkázaní na Ethernet.</p><p>Raspberry Pi lze připojit k bezdrátové síti a následně ho provozovat pouze přes Wi-Fi.</p><p>Pro zařízení někde v technické místnosti je to samozřejmě pohodlnější než tahat další kabel.</p><p>I když každý správný síťař právě dostal chuť napsat nám e-mail, že kabel je kabel.</p><p>A má pravdu.</p><h2>Aktualizace Venus OS</h2><p>Dobrou zprávou je, že systém nemusíme při každé aktualizaci kompletně instalovat znovu.</p><p>Venus OS na Raspberry Pi podporuje online aktualizace podobně jako běžná GX zařízení. Aktualizaci lze provést ručně nebo automaticky.</p><p>Existuje také možnost aktualizace pomocí <code>.swu</code> souboru na USB disku.</p><p>Je ale dobré vědět, že při některých větších změnách může být potřeba znovu zapsat celý image na SD kartu.</p><p>Takový re-image znamená nový zápis <code>.wic.gz</code> obrazu a začátek s čistou instalací, takže před podobnou operací je dobré počítat se ztrátou nastavení.</p><h2>Je Raspberry Pi plnohodnotná náhrada Cerbo GX?</h2><p>Tady je potřeba říct jednu důležitou věc.</p><p>Image Venus OS pro Raspberry Pi je <strong>komunitní projekt</strong>.</p><p>Victron výslovně upozorňuje, že tato varianta nemá stejnou podporu jako jejich komerční GX produkty.</p><p>Pokud tedy stavíme profesionální instalaci, kde je důležitá oficiální podpora a maximální spolehlivost, dává originální GX zařízení velmi dobrý smysl.</p><p>Pro domácí laboratoř, experimentování, vlastní fotovoltaiku nebo prostě pro člověka, který při pohledu na volné Raspberry Pi okamžitě přemýšlí, co by na něm ještě mohl rozběhnout, je ale Venus OS velmi zajímavá možnost.</p><h2>Co dál?</h2><p>Tímhle jsme se zatím podívali na základ – <strong>co Venus OS je, na čem ho můžeme spustit a jak dostat systém na Raspberry Pi</strong>.</p><p>Možnosti tím ale zdaleka nekončí.</p><p>Můžeme připojit Victron zařízení, využít VRM, přidat displej, pracovat s daty a postupně si vytvořit vlastní energetické centrum.</p><p>A přesně tam začíná ta zajímavější část bastlení.</p><p>Proto se k Venus OS na Midoor Lab ještě vrátíme.</p><h2>Oficiální instalační návod</h2><p>Vývoj Venus OS pokračuje a postup instalace i seznam podporovaných Raspberry Pi se může měnit.</p><p>Proto doporučujeme před samotnou instalací zkontrolovat aktuální dokumentaci přímo od Victronu:</p><p><strong>Victron Energy – Raspberry Pi install Venus image</strong></p><p>Odkaz:</p><p><a href="https://github.com/victronenergy/venus/wiki/raspberrypi-install-venus-image" rel="noopener noreferrer" target="_blank">https://github.com/victronenergy/venus/wiki/raspberrypi-install-venus-image</a></p><p>Tam najdete aktuální image, podporované modely Raspberry Pi a podrobnější technické informace k instalaci.</p>
+<!-- MIDOOR_CONTENT_END -->
+
+
+<p>
+
+<a
+  class="button"
+  href="/"
+>
+← Zpět na blog
+</a>
+
+</p>
+
+
+</article>
+
+</main>
+
+
+<footer class="site-footer">
+
+© 2026 Midoor Lab
+
+</footer>
+
+
+</body>
+
+</html>
