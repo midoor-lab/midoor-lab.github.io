@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <url>
-        <loc>https://midoor-lab.github.io/</loc>
-    </url>
-
-    <url>
-        <loc>https://midoor-lab.github.io/meteo/</loc>
-    </url>
-
+  <url>
+    <loc>https://midoor-lab.github.io/</loc>
+  </url>
+  <url>
+    <loc>https://midoor-lab.github.io/meteo/</loc>
+  </url>
+  <url>
+    <loc>https://midoor-lab.github.io/clanky/venus-os-na-raspberry-pi-udelejme-si-vlastni-victron-gx.html</loc>
+    <lastmod>2026-08-23</lastmod>
+  </url>
+  <url>
+    <loc>https://midoor-lab.github.io/clanky/dietpi-linux-ktery-drzi-dietu.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
 </urlset>
