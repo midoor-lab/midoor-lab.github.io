@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0"
+>
+
+<title>Tailscale – bez veřejné IP, bez otevřených portů a bez večera stráveného hádkou s routerem | Midoor Lab</title>
+
+<meta
+  name="description"
+  content="Máte doma Raspberry Pi, NAS, Home Assistant, server nebo jinou chytrou krabičku a potřebujete se k ní dostat zvenku? Dokud sedíme doma na Wi-Fi, je všechno jednoduché. Napíšeme do…"
+>
+
+<meta
+  name="robots"
+  content="index, follow"
+>
+
+<link
+  rel="canonical"
+  href="https://midoor-lab.github.io/clanky/tailscale-bez-verejne-ip-bez-otevrenych-portu-a-bez-vecera-straveneho-hadkou-s-r.html"
+>
+
+<meta
+  property="og:title"
+  content="Tailscale – bez veřejné IP, bez otevřených portů a bez večera stráveného hádkou s routerem"
+>
+
+<meta
+  property="og:description"
+  content="Máte doma Raspberry Pi, NAS, Home Assistant, server nebo jinou chytrou krabičku a potřebujete se k ní dostat zvenku? Dokud sedíme doma na Wi-Fi, je všechno jednoduché. Napíšeme do…"
+>
+
+<meta
+  property="og:type"
+  content="article"
+>
+
+<meta
+  property="og:url"
+  content="https://midoor-lab.github.io/clanky/tailscale-bez-verejne-ip-bez-otevrenych-portu-a-bez-vecera-straveneho-hadkou-s-r.html"
+>
+
+
+
+<meta
+  name="twitter:card"
+  content="summary"
+>
+
+<meta
+  name="twitter:title"
+  content="Tailscale – bez veřejné IP, bez otevřených portů a bez večera stráveného hádkou s routerem"
+>
+
+<meta
+  name="twitter:description"
+  content="Máte doma Raspberry Pi, NAS, Home Assistant, server nebo jinou chytrou krabičku a potřebujete se k ní dostat zvenku? Dokud sedíme doma na Wi-Fi, je všechno jednoduché. Napíšeme do…"
+>
+
+<link
+  rel="stylesheet"
+  href="/assets/style.css"
+>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+<h1>⚡ Midoor Lab</h1>
+
+<p>
+Bastlení • Elektronika • ESP32 • Raspberry Pi • vlastní projekty
+</p>
+
+</header>
+
+
+<nav class="site-nav">
+
+<a href="/">
+Domů
+</a>
+
+<a href="/meteo/">
+🌦️ Meteo
+</a>
+
+<a href="/#projekty">
+Projekty
+</a>
+
+<a href="/#omne">
+O mně
+</a>
+
+</nav>
+
+
+<main class="container">
+
+<article class="article-content">
+
+
+<div class="article-date">
+
+23. srpna 2026
+
+<span class="category">
+Software
+</span>
+
+</div>
+
+
+<h1>
+Tailscale – bez veřejné IP, bez otevřených portů a bez večera stráveného hádkou s routerem
+</h1>
+
+
+
+
+
+
+<!-- MIDOOR_CONTENT_START -->
+<h1>Máte doma Raspberry Pi, NAS, Home Assistant, server nebo jinou chytrou krabičku a potřebujete se k ní dostat zvenku?</h1><p>Dokud sedíme doma na Wi-Fi, je všechno jednoduché.</p><p>Napíšeme do prohlížeče třeba:</p><p><code>192.168.1.50</code></p><p>a jsme tam.</p><p>Jenže potom odejdeme z domu, přepneme telefon na mobilní data a naše krásná domácí IP adresa je nám asi stejně užitečná jako prodlužovačka dlouhá tři metry při cestě do Chorvatska.</p><p>Potřebujeme <strong>vzdálený přístup</strong>.</p><p>A přesně tady přichází na scénu <strong>Tailscale</strong>.</p><h2>Co je Tailscale?</h2><p>Tailscale je služba, pomocí které můžeme bezpečně propojit zařízení přes internet do jedné privátní sítě.</p><p>Můžeme tak propojit například:</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>Raspberry Pi doma,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>notebook,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>mobilní telefon,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>NAS,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>domácí server,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>počítač v dílně,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>VPS v datacentru,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>nebo další zařízení na úplně jiné internetové přípojce.</li></ol><p>Zařízení přitom nemusí být ve stejné fyzické síti.</p><p>Jedno může být doma, druhé na mobilních datech a třetí klidně někde na druhém konci republiky.</p><p>Po připojení do Tailscale se ale mohou chovat skoro tak, jako kdyby byla ve stejné privátní síti.</p><p>Této síti Tailscale říká <strong>tailnet</strong>.</p><h2>Co běží pod kapotou?</h2><p>Tailscale používá <strong>WireGuard</strong>.</p><p>WireGuard je moderní VPN protokol určený pro vytváření šifrovaných spojení mezi zařízeními.</p><p>Samotný WireGuard je skvělý.</p><p>Jenže pokud si všechno stavíme ručně, začneme řešit:</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>klíče,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>jednotlivé klienty,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>IP adresy,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>směrování,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>firewall,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>NAT,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>veřejnou IP,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>a další síťové radosti.</li></ol><p>Tailscale nad WireGuardem přidává další vrstvu, která velkou část této práce vyřeší za nás.</p><p>Výsledek?</p><p>Přidáme zařízení do našeho Tailscale účtu a ona mezi sebou mohou bezpečně komunikovat.</p><p>A my místo sobotního večera stráveného konfigurací routeru můžeme dělat něco užitečnějšího.</p><p>Třeba rozebrat další zařízení, které ještě před pěti minutami normálně fungovalo.</p><h2>Potřebujeme veřejnou IP adresu?</h2><p>Tohle je jedna z největších výhod Tailscale.</p><p><strong>Ve většině běžných případů nepotřebujeme.</strong></p><p>Tailscale se snaží navázat spojení mezi zařízeními přes NAT a firewally automaticky.</p><p>Nemusíme tedy běžně řešit veřejnou IPv4 adresu ani klasický port forwarding.</p><p>To je obrovská výhoda například u domácího internetu, kde jsme za NATem poskytovatele.</p><p>A také u mobilního připojení.</p><p>Nemusíme tedy volat poskytovateli internetu a absolvovat rozhovor:</p><p>„Potřeboval bych veřejnou IPv4.“</p><p>„A proč?“</p><p>„Protože mám doma Raspberry Pi.“</p><p>„Prosím?“</p><p>„Ale nic.“</p><h2>Jak Tailscale funguje v praxi?</h2><p>Představme si jednoduchý příklad.</p><p>Doma máme Raspberry Pi.</p><p>Jeho domácí IP adresa je:</p><p><code>192.168.1.50</code></p><p>Na Raspberry běží nějaké naše webové rozhraní.</p><p>Když jsme doma, otevřeme:</p><p><code>http://192.168.1.50</code></p><p>a funguje.</p><p>Jakmile ale odejdeme z domácí sítě, tato adresa už dostupná není.</p><p>Nainstalujeme tedy Tailscale na Raspberry Pi.</p><p>Potom Tailscale nainstalujeme také do notebooku nebo telefonu.</p><p>Obě zařízení přihlásíme do stejného tailnetu.</p><p>Tailscale každému zařízení přidělí vlastní adresu a vytvoří mezi nimi zabezpečenou cestu.</p><p>Od této chvíle se můžeme k Raspberry Pi dostat i zvenku.</p><p>A přitom jsme na routeru neotevřeli jediný port pro náš webový server.</p><h2>Přímé spojení mezi zařízeními</h2><p>Tailscale se pokud možno snaží vytvořit <strong>přímé peer-to-peer spojení</strong>.</p><p>To znamená, že data mohou putovat přímo mezi naším notebookem a Raspberry Pi.</p><p>Nemusí tedy všechno automaticky protékat nějakým centrálním VPN serverem.</p><p>Přímé spojení má výhodu v nižší latenci a obvykle také lepší rychlosti.</p><p>Ne vždy je ale přímé spojení možné.</p><p>Některé NATy a firewally jsou zkrátka tvrdohlavější než člověk, který tvrdí, že heslo <code>12345678</code> je dostatečně bezpečné.</p><p>V takovém případě může Tailscale použít relay.</p><p>Komunikace mezi zařízeními přitom zůstává šifrovaná.</p><h2>Tailscale na Raspberry Pi</h2><p>Raspberry Pi je pro Tailscale téměř ideální zařízení.</p><p>Je malé, má nízkou spotřebu a většinou běží doma nepřetržitě.</p><p>Tailscale oficiálně podporuje Raspberry Pi OS a instalace na běžném Linuxovém systému je velmi jednoduchá.</p><p>Na Raspberry Pi můžeme Tailscale nainstalovat příkazem:</p><p><code>curl -fsSL https://tailscale.com/install.sh | sh</code></p><p>Potom Tailscale spustíme:</p><p><code>sudo tailscale up</code></p><p>Terminál nám zobrazí adresu pro přihlášení.</p><p>Tu otevřeme v prohlížeči, přihlásíme se a Raspberry Pi se objeví mezi našimi zařízeními v Tailscale.</p><p>A v podstatě máme hotovo.</p><p>Ano.</p><p>Síťaři právě kontrolují, jestli jsme opravdu přeskočili těch dalších sedmnáct kroků.</p><h2>Každé zařízení dostane vlastní IP</h2><p>Po přidání zařízení do tailnetu dostane zařízení vlastní Tailscale IPv4 a IPv6 adresu.</p><p>Adresu Raspberry Pi můžeme zobrazit například příkazem:</p><p><code>tailscale ip</code></p><p>A stav spojení:</p><p><code>tailscale status</code></p><p>Pomocí této adresy potom můžeme komunikovat s Raspberry Pi z ostatních zařízení v našem tailnetu.</p><h2>MagicDNS – protože kdo si má všechny ty IP adresy pamatovat</h2><p>IP adresy jsou krásné.</p><p>První dvě.</p><p>Potom už začínáme hledat papírek, kam jsme si je napsali.</p><p>Tailscale proto nabízí funkci <strong>MagicDNS</strong>.</p><p>Ta umožňuje používat názvy zařízení místo jejich Tailscale IP adres.</p><p>Pokud máme Raspberry Pi pojmenované například:</p><p><code>raspberrypi</code></p><p>můžeme ho v rámci tailnetu používat právě pod tímto názvem.</p><p>Je to mnohem pohodlnější než pokaždé hledat:</p><p>„Jakou že to sakra mělo stovkovou adresu?“</p><h2>A co zařízení, na která Tailscale nainstalovat nejde?</h2><p>Tady začíná být situace ještě zajímavější.</p><p>Doma totiž pravděpodobně nemáme pouze počítače.</p><p>Máme třeba:</p><ol><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>tiskárnu,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>IP kameru,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>regulátor,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>webovou administraci nějakého zařízení,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>domácí automatizaci,</li><li data-list="bullet"><span class="ql-ui" contenteditable="false"></span>různé IoT krabičky.</li></ol><p>Na některá z těchto zařízení Tailscale prostě nenainstalujeme.</p><p>A právě tady přichází <strong>Subnet Router</strong>.</p><h2>Subnet Router</h2><p>Jedno zařízení s Tailscale může fungovat jako brána do další sítě.</p><p>Ideálním kandidátem je opět Raspberry Pi.</p><p>Představme si, že naše domácí síť je:</p><p><code>192.168.1.0/24</code></p><p>Raspberry Pi můžeme nastavit tak, aby tuto síť zpřístupnilo ostatním zařízením v našem tailnetu.</p><p>Potom můžeme být někde mimo domov a přesto se dostat například na:</p><p><code>192.168.1.20</code></p><p><code>192.168.1.30</code></p><p><code>192.168.1.50</code></p><p>Přitom na cílovém zařízení nemusí být Tailscale vůbec nainstalovaný.</p><p>Raspberry Pi funguje jako prostředník mezi Tailscale a domácí LAN.</p><p>Tohle je pro domácí bastlení jedna z nejzajímavějších funkcí.</p><p>Jedno malé Raspberry nám může vytvořit bezpečný vstup do celé domácí sítě.</p><p>Samozřejmě pouze tam, kam přístup povolíme.</p><h2>Exit Node – vezmeme si domácí internet s sebou</h2><p>Další zajímavou funkcí Tailscale je <strong>Exit Node</strong>.</p><p>Normálně Tailscale používáme pro komunikaci mezi zařízeními v našem tailnetu.</p><p>Můžeme ale jedno zařízení nastavit jako výstupní bod pro internetový provoz.</p><p>Například naše domácí Raspberry Pi.</p><p>Potom můžeme notebooku na cestách říct:</p><p><strong>Veškerý internetový provoz pošli přes moje Raspberry Pi doma.</strong></p><p>Notebook vytvoří zabezpečené spojení k Raspberry Pi a to následně odešle provoz do internetu.</p><p>Z pohledu internetu tedy přistupujeme přes naši domácí přípojku.</p><p>To může být zajímavé například při používání veřejné Wi-Fi.</p><p>Sedíme tedy někde v hotelu, ale náš internetový provoz může odcházet přes zařízení doma.</p><p>Technicky jsme na dovolené.</p><p>Síťově pořád sedíme doma v obýváku.</p><p>Škoda, že stejně nefunguje lednička.</p><h2>SSH bez otevřeného portu do internetu</h2><p>Pokud používáme Raspberry Pi nebo Linuxový server, pravděpodobně známe SSH.</p><p>Běžně se připojujeme například:</p><p><code>ssh uzivatel@192.168.1.50</code></p><p>Pro vzdálený přístup bychom bez VPN museli nějakým způsobem zpřístupnit SSH server z internetu.</p><p>A vystavovat administrační služby veřejně není něco, co bychom měli dělat jen proto, že to router umožňuje.</p><p>S Tailscale můžeme SSH provozovat uvnitř našeho tailnetu.</p><p>Tailscale navíc nabízí vlastní funkci <strong>Tailscale SSH</strong>, která dokáže využít identitu a přístupová pravidla Tailscale pro autentizaci a autorizaci SSH spojení.</p><p>Pro správu Raspberry Pi nebo serverů je to velmi zajímavá možnost.</p><p>Port 22 na routeru tak může zůstat zavřený.</p><p>A internet může klepat.</p><p>My nejsme doma.</p><h2>Bezpečnost a přístupová pravidla</h2><p>To, že máme VPN, ještě neznamená, že máme automaticky vyřešenou veškerou bezpečnost.</p><p>Tailscale používá identitu zařízení a uživatelů a umožňuje definovat pravidla, kdo může komunikovat s čím.</p><p>Nemusíme tedy nutně vytvořit síť ve stylu:</p><p><strong>„Všichni vidí všechno.“</strong></p><p>Můžeme přístup omezit podle toho, co jednotliví uživatelé nebo zařízení skutečně potřebují.</p><p>A to je správný přístup.</p><p>Protože bezpečnostní strategie:</p><p><strong>„Nikdo o tom serveru neví.“</strong></p><p>funguje na internetu přibližně do prvního automatického skenu.</p><h2>Co když přímé spojení nefunguje?</h2><p>Tailscale používá několik možností propojení zařízení.</p><p>Nejlepší je přímé spojení.</p><p>Pokud ho ale kvůli síťovým podmínkám nelze vytvořit, může být komunikace přenesena přes relay.</p><p>Důležité je, že i při tomto způsobu zůstávají data mezi zařízeními end-to-end šifrovaná pomocí WireGuardu.</p><p>Relay tedy neznamená:</p><p>„Tak teď si naše data někdo cestou přečte.“</p><p>Rozdíl poznáme spíš ve výkonu a latenci.</p><h2>Kde bych Tailscale použil?</h2><p>Možností je opravdu hodně.</p><h3>Raspberry Pi</h3><p>Vzdálené SSH, webová administrace nebo vlastní služby.</p><h3>Home Assistant</h3><p>Bezpečný přístup k domácí automatizaci zvenku.</p><h3>NAS</h3><p>Přístup k domácím souborům bez veřejného vystavení administračního rozhraní.</p><h3>Domácí server</h3><p>Správa serveru odkudkoliv.</p><h3>IoT zařízení</h3><p>Pomocí Subnet Routeru můžeme přistupovat i k zařízením, na která samotný Tailscale nainstalovat nejde.</p><h3>Vzdálená zařízení</h3><p>Raspberry Pi na chatě, v dílně nebo někde úplně jinde můžeme připojit do stejného tailnetu.</p><p>Najednou máme jednu privátní síť přes několik fyzických míst.</p><h2>Výhody Tailscale</h2><p>Pro domácí použití vidím několik zásadních výhod.</p><p><strong>Nepotřebujeme běžně veřejnou IPv4.</strong></p><p>To je dnes čím dál důležitější.</p><p><strong>Nemusíme klasicky otevírat porty na routeru.</strong></p><p>Naše služby nemusí být veřejně dostupné z internetu.</p><p><strong>Používá WireGuard.</strong></p><p>Komunikace mezi zařízeními je šifrovaná.</p><p><strong>Instalace je jednoduchá.</strong></p><p>Na Raspberry Pi je základní instalace otázkou několika příkazů.</p><p><strong>Funguje na mnoha platformách.</strong></p><p>Můžeme propojit Linux, Windows, macOS, Android, iOS a další podporovaná zařízení.</p><p><strong>Umí Subnet Router.</strong></p><p>Nemusíme instalovat Tailscale na každou krabičku v domácnosti.</p><p><strong>Umí Exit Node.</strong></p><p>Můžeme směrovat internetový provoz přes vybrané zařízení.</p><p>A hlavně:</p><p>Nemusíme strávit sobotní večer tím, že budeme třicetkrát restartovat router a pokaždé tvrdit:</p><p><strong>„Teď už to určitě pojede.“</strong></p><h2>Má Tailscale nějaké nevýhody?</h2><p>Samozřejmě.</p><p>Tailscale není totéž jako kompletně vlastní ručně spravovaná WireGuard infrastruktura.</p><p>Používáme službu, která řeší například koordinaci zařízení, identity a správu tailnetu.</p><p>Někomu to vyhovuje právě kvůli jednoduchosti.</p><p>Jiný uživatel může chtít mít úplně všechno pod vlastní kontrolou.</p><p>Je tedy dobré vědět, co od řešení očekáváme.</p><p>Pro domácího uživatele, který chce především bezpečný a jednoduchý vzdálený přístup, je ale Tailscale velmi zajímavý kompromis mezi:</p><p><strong>„Chci se dostat domů.“</strong></p><p>a</p><p><strong>„Nechci kvůli tomu vystudovat síťové inženýrství.“</strong></p><h2>Závěr</h2><p>Tailscale je jedna z těch technologií, které vypadají skoro podezřele jednoduše.</p><p>Máme Raspberry Pi doma.</p><p>Máme notebook někde úplně jinde.</p><p>Na obě zařízení nainstalujeme Tailscale, přihlásíme je do stejného tailnetu a můžeme mezi nimi bezpečně komunikovat.</p><p>Bez klasického port forwardingu.</p><p>Bez nutnosti veřejné IPv4.</p><p>A bez toho, abychom administrační rozhraní našeho domácího serveru vystavili celému internetu.</p><p>K tomu přidáme Subnet Router, Exit Node, MagicDNS a možnost SSH a z jednoduché VPN se stává velmi šikovný nástroj pro domácí síť.</p><p>Pro Raspberry Pi, domácí servery a různé bastlířské projekty je to přesně ten druh technologie, který máme rádi:</p><p><strong>Nainstalovat, nastavit a používat.</strong></p><p>A ne:</p><p><strong>Nainstalovat, tři hodiny nadávat, resetovat router, obnovit tovární nastavení a jít spát.</strong></p><h2>Kde pokračovat?</h2><p>Aktuální dokumentaci, instalační postupy a podrobnosti najdete přímo na oficiálním webu Tailscale:</p><p><a href="https://tailscale.com/docs" rel="noopener noreferrer" target="_blank">https://tailscale.com/docs</a></p><p>A příště si můžeme ukázat praktickou instalaci Tailscale na Raspberry Pi a udělat z něj <strong>bezpečnou bránu do celé domácí sítě</strong>.</p>
+<!-- MIDOOR_CONTENT_END -->
+
+
+<p>
+
+<a
+  class="button"
+  href="/"
+>
+← Zpět na blog
+</a>
+
+</p>
+
+
+</article>
+
+</main>
+
+
+<footer class="site-footer">
+
+© 2026 Midoor Lab
+
+</footer>
+
+
+</body>
+
+</html>
