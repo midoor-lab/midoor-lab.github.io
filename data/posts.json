@@ -1,5 +1,14 @@
 [
   {
+    "id": "tailscale-bez-verejne-ip-bez-otevrenych-portu-a-bez-vecera-straveneho-hadkou-s-r",
+    "title": "Tailscale – bez veřejné IP, bez otevřených portů a bez večera stráveného hádkou s routerem",
+    "date": "2026-08-23",
+    "dateText": "23. srpna 2026",
+    "category": "Software",
+    "excerpt": "Máte doma Raspberry Pi, NAS, Home Assistant, server nebo jinou chytrou krabičku a potřebujete se k ní dostat zvenku? Dokud sedíme doma na Wi-Fi, je všechno jednoduché. Napíšeme do…",
+    "url": "/clanky/tailscale-bez-verejne-ip-bez-otevrenych-portu-a-bez-vecera-straveneho-hadkou-s-r.html"
+  },
+  {
     "id": "venus-os-na-raspberry-pi-udelejme-si-vlastni-victron-gx",
     "title": "Venus OS na Raspberry Pi – udělejme si vlastní Victron GX",
     "date": "2026-08-23",
