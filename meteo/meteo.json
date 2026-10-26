@@ -1,12 +1,12 @@
 {
   "station": "Veltruby Meteo",
-  "temperature": 3.61,
-  "humidity": 89.1,
+  "temperature": 3.49,
+  "humidity": 93.3,
   "pressure": 1000.6,
   "rain_today": 1.1176,
   "rain_week": 25.146,
   "rain_month": 38.5572,
   "rain_year": 123.2154,
-  "updated": "26.10.2026 22:52:43",
-  "timestamp": 1793051563
+  "updated": "26.10.2026 23:02:45",
+  "timestamp": 1793052165
 }
